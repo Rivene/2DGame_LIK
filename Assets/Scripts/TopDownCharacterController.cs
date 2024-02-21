@@ -8,7 +8,7 @@ public class TopDownCharacterController : MonoBehaviour
     float x, y;
     public float speed;
     public SpriteRenderer characterSprite;
-    public Animator animator;
+    Animator animator;
 
     private void Awake()
     {
@@ -19,6 +19,7 @@ public class TopDownCharacterController : MonoBehaviour
     {
         CharacterMovement();
         CharacterFlipX();
+        CharacterJump();
     }
 
     private void CharacterMovement()
@@ -27,7 +28,6 @@ public class TopDownCharacterController : MonoBehaviour
         y = Input.GetAxisRaw("Vertical");
 
         transform.position += new Vector3(x, y).normalized * Time.deltaTime * speed;
-        Debug.Log($"{x}, {y}");
 
         animator.SetBool("IsWalking", new Vector3(x, y).magnitude > 0f);
     }
@@ -38,5 +38,10 @@ public class TopDownCharacterController : MonoBehaviour
             characterSprite.flipX = false;
         else
             characterSprite.flipX = true;
+    }
+
+    private void CharacterJump()
+    {
+        animator.SetBool("IsJumping", Input.GetButtonDown("Jump"));
     }
 }
