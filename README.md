@@ -1,5 +1,6 @@
 # 이인규
 
+
 ## 프로젝트 구현 관련
 
 1. 씬 구성
@@ -20,6 +21,7 @@
 4. Tile Map 구현
    4-1. Floor, BackWall, FrontWall, Collider로 구성
    4-2. Collider는 보이지 않으며 플레이어와 충돌만 구현
+
 
 ## 학습 관련
 
