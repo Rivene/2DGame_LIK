@@ -20,6 +20,8 @@ public class TopDownCharacterController : MonoBehaviour
         CharacterMovement();
         CharacterFlipX();
         CharacterJump();
+        CharacterAttack();
+        CharacterStrike();
     }
 
     private void CharacterMovement()
@@ -29,7 +31,7 @@ public class TopDownCharacterController : MonoBehaviour
 
         transform.position += new Vector3(x, y).normalized * Time.deltaTime * speed;
 
-        animator.SetBool("IsWalking", new Vector3(x, y).magnitude > 0f);
+        animator.SetBool("IsRun", new Vector3(x, y).magnitude > 0f);
     }
 
     private void CharacterFlipX()
@@ -43,5 +45,15 @@ public class TopDownCharacterController : MonoBehaviour
     private void CharacterJump()
     {
         animator.SetBool("IsJumping", Input.GetButtonDown("Jump"));
+    }
+
+    private void CharacterAttack()
+    {
+        animator.SetBool("IsAttack", Input.GetMouseButton(0));
+    }
+
+    private void CharacterStrike()
+    {
+        animator.SetBool("IsStrike", Input.GetMouseButton(1));
     }
 }
